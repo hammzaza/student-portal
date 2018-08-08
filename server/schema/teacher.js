@@ -10,6 +10,7 @@ var TeacherSchema = mongoose.Schema({
     phone_number:String,
     school: String,
     class: String,
+    type: String,
 });
 
 TeacherSchema.methods.generateHash = function (password) {

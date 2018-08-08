@@ -27,13 +27,14 @@ require('./server/config/passport');
 //app.use(express.static(path.join(__dirname, 'dist/projectname')));
 
 require('./server/routes/registeration')(app);
+require('./server/routes/sign-in')(app,passport);
 // app.get('*', function (req, res) {
 //     res.sendFile(path.join(__dirname, 'dist/projectname/index.html'));
 // });
 
 app.get('/',function(req,res){
     res.send({message:"Hello world"});
-})
+});
 
 app.listen(port, function () {
     console.log('App is listening to port : ' + port);
