@@ -10,11 +10,13 @@ module.exports = function (passport) {
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
     opts.secretOrKey = config.secret;
     passport.use('teacher-auth',new JwtStrategy(opts, function (jwt_payload, done) {
-        Teacher.findById(jwt_payload.id,function(err,obj){
+        console.log('HELLO');
+        console.log(jwt_payload);
+        Teacher.findById(jwt_payload._id,function(err,obj){
             if (err)
                 return done(err,false);
-            if(user)
-                return done(null,user);
+            if(obj)
+                return done(null,obj);
             else
                 return done(null,false);
         });

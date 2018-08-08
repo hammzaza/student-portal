@@ -1,6 +1,9 @@
 var jwt = require('jsonwebtoken');
 var config = require('../config/mongodb');
-module.exports = function(app,passport){
+var Teacher = require('../schema/teacher');
+var passport = require('passport');
+require('../config/passport')(passport);
+module.exports = function(app){
     app.post('/teacher/authenticate', function (req, res, next) {
         var username = req.body.username;
         var password = req.body.password;
@@ -15,7 +18,7 @@ module.exports = function(app,passport){
                 });
             }
             if (user.validPassword(password)) {
-                var token = jwt.sign(user, config.secret, {
+                var token = jwt.sign(user.toJSON(), config.secret, {
                     expiresIn: 604600
                 });
                 res.json({
@@ -43,11 +46,6 @@ module.exports = function(app,passport){
     });
 
     app.get('/teacher/profile', passport.authenticate('teacher-auth', { session: false }), function (req, res, next) {
-        if (req.user.type == 'Teacher')
-            res.json({
-                teacher: req.user
-            });
-        else
-            throw err;
+        res.json({teacher: req.user});
     });
 };

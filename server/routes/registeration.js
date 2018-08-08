@@ -4,7 +4,7 @@ module.exports = function(app,passport){
     app.post('/registeration/register-teacher',function(req,res){
         teach = new Teacher();
         teach.username = randomstring.generate({length: 7,charset: 'alphabetic'});
-        teach.password = teach.generateHash(randomstring.generate({length: 7,charset: 'alphabetic'}));
+        teach.password = randomstring.generate({length: 7,charset: 'alphabetic'});
         teach.full_name = req.body.full_name;
         teach.teach = req.body.teacher;
         teach.phone_number = req.body.phone_number;

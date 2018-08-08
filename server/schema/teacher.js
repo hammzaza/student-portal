@@ -18,8 +18,10 @@ TeacherSchema.methods.generateHash = function (password) {
 };
 
 TeacherSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
+    if(password == this.password)
+        return true;
+    else
+        return false;
 };
-
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Teacher', TeacherSchema);

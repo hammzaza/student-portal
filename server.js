@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
-require('./server/config/passport');
 //app.use(express.static(path.join(__dirname, 'dist/projectname')));
 
 require('./server/routes/registeration')(app);
