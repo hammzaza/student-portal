@@ -26,10 +26,11 @@ app.use(passport.session());
 require('./server/config/passport');
 //app.use(express.static(path.join(__dirname, 'dist/projectname')));
 
-require('./server/routes/sign-in')(app);
+require('./server/routes/registeration')(app);
 // app.get('*', function (req, res) {
 //     res.sendFile(path.join(__dirname, 'dist/projectname/index.html'));
 // });
+
 app.get('/',function(req,res){
     res.send({message:"Hello world"});
 })

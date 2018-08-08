@@ -7,6 +7,7 @@ var TeacherSchema = mongoose.Schema({
     password: String,
     full_name: String,
     teacher: String,
+    phone_number:String,
     school: String,
     class: String,
 });
