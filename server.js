@@ -24,9 +24,12 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 //app.use(express.static(path.join(__dirname, 'dist/projectname')));
-
-require('./server/routes/registeration')(app);
-require('./server/routes/sign-in')(app,passport);
+require('./server/config/passport')();
+require('./server/routes/register-parent')(app);
+require('./server/routes/register-teacher')(app);
+require('./server/routes/sign-in')(app);
+require('./server/routes/teacher')(app,passport);
+require('./server/routes/students')(app, passport);
 // app.get('*', function (req, res) {
 //     res.sendFile(path.join(__dirname, 'dist/projectname/index.html'));
 // });

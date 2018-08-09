@@ -2,16 +2,15 @@ const {
     Strategy: JwtStrategy,
     ExtractJwt
 } = require('passport-jwt');
-
+var passport = require('passport');
 var Teacher = require('../schema/teacher');
 var config = require('../config/mongodb');
-module.exports = function (passport) {
+module.exports = function () {
     var opts = {};
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
     opts.secretOrKey = config.secret;
     passport.use('teacher-auth',new JwtStrategy(opts, function (jwt_payload, done) {
-        console.log('HELLO');
-        console.log(jwt_payload);
+       
         Teacher.findById(jwt_payload._id,function(err,obj){
             if (err)
                 return done(err,false);
