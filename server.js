@@ -30,6 +30,7 @@ require('./server/routes/register-teacher')(app);
 require('./server/routes/sign-in')(app);
 require('./server/routes/teacher')(app,passport);
 require('./server/routes/students')(app, passport);
+require('./server/routes/score')(app, passport);
 // app.get('*', function (req, res) {
 //     res.sendFile(path.join(__dirname, 'dist/projectname/index.html'));
 // });
