@@ -1,5 +1,8 @@
 var Student = require('../schema/student');
 var randomstring = require("randomstring");
+const accountSid = 'ACcb2f5a1f015bc8c32cab79dc64d4e0da';
+const authToken = '290489449859120de072ed33b6f04d72';
+const client = require('twilio')(accountSid, authToken);
 module.exports = function(app){
     app.post('/registeration/register-student', function (req, res) {
         par = new Student();
@@ -17,10 +20,20 @@ module.exports = function(app){
                 return err;
             } 
             else {////////addd message code here
-                res.json({
-                    message: 'The login credentials have been sent to the inserted number'
-                });
+                client.messages
+                    .create({
+                        body: 'Welcome to our portal as a parent. \n Your login username: '+ par.username + '\n Password: ' + par.password,
+                        from: 'xxx-xxxx---xxx',
+                        to: par.phone_number
+                    }).then(message => res.json({message: 'The login credentials have been sent to the inserted number'}))
+                    .done();
+                
             }
         });
     });
 };
+
+
+
+
+
