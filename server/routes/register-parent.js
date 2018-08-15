@@ -1,7 +1,7 @@
 var Student = require('../schema/student');
 var randomstring = require("randomstring");
-const accountSid = 'ACcb2f5a1f015bc8c32cab79dc64d4e0da';
-const authToken = '290489449859120de072ed33b6f04d72';
+const accountSid = 'xxxxxxxxx';
+const authToken = 'xxxxxxxxxxxxx';
 const client = require('twilio')(accountSid, authToken);
 module.exports = function(app){
     app.post('/registeration/register-student', function (req, res) {
