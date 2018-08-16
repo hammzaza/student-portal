@@ -26,7 +26,7 @@ app.use(passport.session());
 //app.use(express.static(path.join(__dirname, 'dist/projectname')));
 require('./server/config/passport')();
 require('./server/routes/active')(app, passport);
-require('./server/routes/attendance')(app, passport);
+require('./server/routes/attendence')(app, passport);
 require('./server/routes/homework')(app, passport);
 require('./server/routes/other-schemas')(app);
 require('./server/routes/register-parent')(app);

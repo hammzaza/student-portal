@@ -1,4 +1,4 @@
-var Attendence = require('../schema/attendance');
+var Attendence = require('../schema/attendence');
 var dateFormat = require('dateformat');
 module.exports = function (app, passport) {
 
