@@ -1,7 +1,7 @@
 var LessonList = require('../schema/lesson-list');
 var ClassList = require('../schema/classlist');
 var SchoolList = require('../schema/school-list');
-module.exports = function (app, passport) {
+module.exports = function (app) {
     app.post('/add-lessonlist', function (req, res) {
          LessonList.create(req.body.name, function (err, post) {
              if (err) {

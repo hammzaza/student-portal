@@ -25,16 +25,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 //app.use(express.static(path.join(__dirname, 'dist/projectname')));
 require('./server/config/passport')();
+require('./server/routes/active')(app, passport);
+require('./server/routes/attendance')(app, passport);
+require('./server/routes/homework')(app, passport);
+require('./server/routes/other-schemas')(app);
 require('./server/routes/register-parent')(app);
 require('./server/routes/register-teacher')(app);
-require('./server/routes/sign-in')(app);
-require('./server/routes/teacher')(app,passport);
-require('./server/routes/students')(app, passport);
 require('./server/routes/score')(app, passport);
+require('./server/routes/sign-in')(app);
+require('./server/routes/students')(app, passport);
+require('./server/routes/teacher')(app,passport);
+
 // app.get('*', function (req, res) {
 //     res.sendFile(path.join(__dirname, 'dist/projectname/index.html'));
 // });
 
+//this should display login page.
 app.get('/',function(req,res){
     res.send({message:"Hello world"});
 });
