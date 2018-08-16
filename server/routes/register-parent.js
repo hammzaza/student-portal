@@ -3,8 +3,8 @@ var randomstring = require("randomstring");
 const accountSid = 'xxxxxxxxx';
 const authToken = 'xxxxxxxxxxxxx';
 const client = require('twilio')(accountSid, authToken);
-module.exports = function(app){
-    app.post('/registeration/register-student', function (req, res) {
+module.exports = function(app,passport){
+    app.post('/registeration/register-student', passport.authenticate('teacher-auth', {session: false}), function (req, res) {
         par = new Student();
         par.username = req.body.phone_number;
         par.password = randomstring.generate({length: 7,charset: 'alphabetic'});
@@ -12,7 +12,7 @@ module.exports = function(app){
         par.surname = req.body.surname;
         par.parent_name = req.body.parent_name;
         par.phone_number = req.body.phone_number;
-        par.class = req.body.class; //input type hidden. value set to teacher.class.
+        par.class = req.user.class; //the teacher's credentials are saved in req.user through jwt auth.
         par.type = 'Student';
         Student.create(par, function (err, post) {
             if (err) { 

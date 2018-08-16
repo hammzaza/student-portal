@@ -1,4 +1,7 @@
 var Teacher = require('../schema/teacher');
+const accountSid = 'xxxxxxx';
+const authToken = 'xxxxx';
+const client = require('twilio')(accountSid, authToken);
 module.exports = function(app,passport){
     //////////////////////teacher main profile//////////////////////
     app.get('/teacher/profile', passport.authenticate('teacher-auth', {session: false}), function (req, res) {
@@ -21,7 +24,14 @@ module.exports = function(app,passport){
             if (err) {
                 throw err;
             } else {
-                ///////////////send sms here/////////////////
+                client.messages.create({
+                        body: 'Your login credentials have been changed\n Login: '+ req.body.phone_number + ' with the same password',
+                        from: 'xxx-xxxx---xxx',
+                        to: req.body.phone_number
+                    }).then(message => res.json({
+                        message: 'Succesfully done'
+                    }))
+                    .done();
                 res.json(result);
             }
         });
