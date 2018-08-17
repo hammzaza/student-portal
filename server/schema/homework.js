@@ -6,7 +6,7 @@ var HomeWorkSchema = mongoose.Schema({
     student_username: String, //taken from student's schema,
     class: String, // taken from student's schema since class.student = class.teacher
     date: String, // taken from req.user, //logged in teacher's class
-    homework: Boolean,
+    home_work: Boolean,
     subject: String, // selected subject
 });
 

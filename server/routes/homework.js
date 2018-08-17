@@ -1,4 +1,4 @@
-var HomeWork = require('../schema/HomeWork');
+var HomeWork = require('../schema/homework');
 var dateFormat = require('dateformat');
 module.exports = function (app, passport) {
 

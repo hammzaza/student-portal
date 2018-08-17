@@ -29,7 +29,7 @@ require('./server/routes/active')(app, passport);
 require('./server/routes/attendence')(app, passport);
 require('./server/routes/homework')(app, passport);
 require('./server/routes/other-schemas')(app);
-require('./server/routes/register-parent')(app);
+require('./server/routes/register-parent')(app,passport);
 require('./server/routes/register-teacher')(app);
 require('./server/routes/score')(app, passport);
 require('./server/routes/sign-in')(app);

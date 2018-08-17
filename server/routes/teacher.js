@@ -1,6 +1,7 @@
 var Teacher = require('../schema/teacher');
-const accountSid = 'xxxxxxx';
-const authToken = 'xxxxx';
+const accountSid = 'ACcb2f5a1f015bc8c32cab79dc64d4e0da';
+const authToken = '290489449859120de072ed33b6f04d72';
+
 const client = require('twilio')(accountSid, authToken);
 module.exports = function(app,passport){
     //////////////////////teacher main profile//////////////////////
