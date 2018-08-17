@@ -1,4 +1,4 @@
-var Active = require('../schema/Active');
+var Active = require('../schema/active');
 var dateFormat = require('dateformat');
 module.exports = function (app, passport) {
 
